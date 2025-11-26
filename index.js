@@ -1,7 +1,6 @@
 // Entrada dos fatores do calculo
 var capital_inicial = document.getElementById("capital")
 var taxa = document.getElementById("taxa")
-var periodo = document.getElementById("periodo")
 var tempo = document.getElementById("tempo")
 
 // Botão de calcular e local do resultado
@@ -28,13 +27,36 @@ function calcularMontante(capital, juros) {
 
 // ========== |Evento de clique no botão calcular| ============
 botao_calcular.addEventListener("click", function () {
+    if (validarEntrada() === false) {
+        alert("Cálculo não realizado devido a entradas inválidas.");
+        return;
+    }
     var juros = calcularJurosSimples()
     var montante = calcularMontante(parseFloat(capital_inicial.value), juros)
 
+    var brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     resultado.innerHTML = `
         <h3>Resultado:</h3>
-        <p>Juros Simples: R$ ${juros}</p>
-        <p>Montante Total: R$ ${montante}</p>
+        <p>Juros Simples: ${brl(juros)}</p>
+        <p>Montante Total: ${brl(montante)}</p>
     `
 }
 )
+
+
+// ======================|Verificar entrada de dados|=================
+function validarEntrada() {
+    if (capital_inicial.value === "" || taxa.value === "" || tempo.value === "") {
+        return false;
+    }
+    if (isNaN(capital_inicial.value) || isNaN(taxa.value) || isNaN(tempo.value)) {
+        return false;
+    }
+    if (parseFloat(capital_inicial.value) < 0 || parseFloat(taxa.value) < 0 || parseFloat(tempo.value) < 0) {
+        return false;
+    }
+    return true;
+}
+
+
+// =================|Fim do código|=================
