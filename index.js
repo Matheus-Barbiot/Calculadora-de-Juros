@@ -1,16 +1,16 @@
 // Entrada dos fatores do calculo
-var capital_inicial = document.getElementById("capital")
-var taxa = document.getElementById("taxa")
+var capitalInicial = document.getElementById("capital")
+var taxaMensal = document.getElementById("taxa")
 var tempo = document.getElementById("tempo")
 
 // Botão de calcular e local do resultado
-var botao_calcular = document.getElementById("calcular")
-var resultado = document.getElementById("resultado")
+var botaoCalcular = document.getElementById("calcular")
+var divResultado = document.getElementById("resultado")
 
 // ===========|Função para calcular juros simples|===========
 function calcularJurosSimples() {
-    var c = parseFloat(capital_inicial.value)
-    var i = parseFloat(taxa.value) / 100
+    var c = parseFloat(capitalInicial.value)
+    var i = parseFloat(taxaMensal.value) / 100
     var t = parseFloat(tempo.value)
 
     var juros_simples = c * i * t
@@ -26,16 +26,16 @@ function calcularMontante(capital, juros) {
 
 
 // ========== |Evento de clique no botão calcular| ============
-botao_calcular.addEventListener("click", function () {
+botaoCalcular.addEventListener("click", function () {
     if (validarEntrada() === false) {
         alert("Cálculo não realizado devido a entradas inválidas.");
         return;
     }
     var juros = calcularJurosSimples()
-    var montante = calcularMontante(parseFloat(capital_inicial.value), juros)
+    var montante = calcularMontante(parseFloat(capitalInicial.value), juros)
 
     var brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
-    resultado.innerHTML = `
+    divResultado.innerHTML = `
         <h3>Resultado:</h3>
         <p>Juros Simples: ${brl(juros)}</p>
         <p>Montante Total: ${brl(montante)}</p>
@@ -46,13 +46,13 @@ botao_calcular.addEventListener("click", function () {
 
 // ======================|Verificar entrada de dados|=================
 function validarEntrada() {
-    if (capital_inicial.value === "" || taxa.value === "" || tempo.value === "") {
+    if (capitalInicial.value === "" || taxaMensal.value === "" || tempo.value === "") {
         return false;
     }
-    if (isNaN(capital_inicial.value) || isNaN(taxa.value) || isNaN(tempo.value)) {
+    if (isNaN(capitalInicial.value) || isNaN(taxaMensal.value) || isNaN(tempo.value)) {
         return false;
     }
-    if (parseFloat(capital_inicial.value) < 0 || parseFloat(taxa.value) < 0 || parseFloat(tempo.value) < 0) {
+    if (parseFloat(capitalInicial.value) < 0 || parseFloat(taxaMensal.value) < 0 || parseFloat(tempo.value) < 0) {
         return false;
     }
     return true;
