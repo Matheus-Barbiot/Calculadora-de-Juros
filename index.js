@@ -1,26 +1,26 @@
 // Entrada dos fatores do calculo
-var capitalInicial = document.getElementById("capital")
-var taxaMensal = document.getElementById("taxa")
-var tempo = document.getElementById("tempo")
+const capitalInicial = document.getElementById("capital")
+const taxaMensal = document.getElementById("taxa")
+const tempo = document.getElementById("tempo")
 
 // Botão de calcular e local do resultado
-var botaoCalcular = document.getElementById("calcular")
-var divResultado = document.getElementById("resultado")
+const botaoCalcular = document.getElementById("calcular")
+const divResultado = document.getElementById("resultado")
 
 // ===========|Função para calcular juros simples|===========
 function calcularJurosSimples() {
-    var c = parseFloat(capitalInicial.value)
-    var i = parseFloat(taxaMensal.value) / 100
-    var t = parseFloat(tempo.value)
+    let c = parseFloat(capitalInicial.value)
+    let i = parseFloat(taxaMensal.value) / 100
+    let t = parseFloat(tempo.value)
 
-    var juros_simples = c * i * t
-    return juros_simples
+    const jurosSimples = c * i * t
+    return jurosSimples
 }
 
 
 // ========== |Função para calcular montante| ================
 function calcularMontante(capital, juros) {
-    var montante = capital + juros
+    const montante = capital + juros
     return montante
 }
 
@@ -31,10 +31,11 @@ botaoCalcular.addEventListener("click", function () {
         alert("Cálculo não realizado devido a entradas inválidas.");
         return;
     }
-    var juros = calcularJurosSimples()
-    var montante = calcularMontante(parseFloat(capitalInicial.value), juros)
 
-    var brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+    let juros = calcularJurosSimples()
+    let montante = calcularMontante(parseFloat(capitalInicial.value), juros)
+
+    const brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     divResultado.innerHTML = `
         <h3>Resultado:</h3>
         <p>Juros Simples: ${brl(juros)}</p>
@@ -46,17 +47,21 @@ botaoCalcular.addEventListener("click", function () {
 
 // ======================|Verificar entrada de dados|=================
 function validarEntrada() {
-    if (capitalInicial.value === "" || taxaMensal.value === "" || tempo.value === "") {
-        return false;
-    }
-    if (isNaN(capitalInicial.value) || isNaN(taxaMensal.value) || isNaN(tempo.value)) {
-        return false;
-    }
-    if (parseFloat(capitalInicial.value) < 0 || parseFloat(taxaMensal.value) < 0 || parseFloat(tempo.value) < 0) {
-        return false;
-    }
-    return true;
+    const campos = [capitalInicial.value, taxaMensal.value, tempo.value]
+
+    // Verifica campos vazios
+    if (campos.some(v => v === "")) return false
+
+    // Verifica se são números válidos
+    if (campos.some(v => isNaN(v))) return false
+
+    // Verifica se são positivos
+    if (campos.some(v => parseFloat(v) < 0)) return false
+
+    return true
 }
+
+
 
 
 // =================|Fim do código|=================
