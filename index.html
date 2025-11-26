@@ -19,26 +19,19 @@
             <form>
                 <div>
                     <label for="capital">Capital</label>
-                    <input type="number" id="capital" name="capital" required>
+                    <input type="number" id="capital" name="capital" value="100">
                 </div>
                 <div>
                     <label for="taxa">Taxa de juros (%)</label>
-                    <input type="number" id="taxa" name="taxa" required>
+                    <input type="number" id="taxa" name="taxa" value="50">
                 </div>
                 <div>
                     <div>
                         <label for="periodo">Período de pagamento</label>
                         <input type="number" id="tempo" name="tempo" value="1">
                     </div>
-                    <div>
-                        <label for="mensal">Mensal</label>
-                        <input type="radio" id="mensal" name="periodo" value="mensal" checked>
-                    </div>
-                    <div>
-                        <label for="anual">Anual</label>
-                        <input type="radio" id="anual" name="periodo" value="anual">
-                    </div>
-                    <input type="submit" value="Calcular">
+
+                    <input type="button" value="Calcular" id="calcular">
                 </div>
             </form>
             <div id="resultado">
