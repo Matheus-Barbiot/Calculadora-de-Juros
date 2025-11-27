@@ -37,7 +37,6 @@ botaoCalcular.addEventListener("click", function () {
 
     const brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     divResultado.innerHTML = `
-        <h3>Resultado:</h3>
         <p>Juros Simples: ${brl(juros)}</p>
         <p>Montante Total: ${brl(montante)}</p>
     `
