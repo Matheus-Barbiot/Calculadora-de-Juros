@@ -1,50 +1,48 @@
-// Entrada dos fatores do calculo
-const capitalInicial = document.getElementById("capital")
-const taxaMensal = document.getElementById("taxa")
-const tempo = document.getElementById("tempo")
+let capitalInicial = document.getElementById("capital")
+let taxaMensal = document.getElementById("taxa")
+let tempo = document.getElementById("tempo")
 
 // Botão de calcular e local do resultado
 const botaoCalcular = document.getElementById("calcular")
 const divResultado = document.getElementById("resultado")
 
-// ===========|Função para calcular juros simples|===========
-function calcularJurosSimples() {
+// ===========|Função para calcular juros compostos|===========
+function calcularJurosCompostos() {
     let c = parseFloat(capitalInicial.value)
     let i = parseFloat(taxaMensal.value) / 100
     let t = parseFloat(tempo.value)
 
-    const jurosSimples = c * i * t
-    return jurosSimples
+    const montante = c * (Math.pow((1 + i), t))
+    const jurosCompostos = montante - c
+    return jurosCompostos
 }
 
-
-// ========== |Função para calcular montante| ================
 function calcularMontante(capital, juros) {
     const montante = capital + juros
     return montante
 }
 
-
-// ========== |Evento de clique no botão calcular| ============
 botaoCalcular.addEventListener("click", function () {
     if (validarEntrada() === false) {
         alert("Cálculo não realizado devido a entradas inválidas.");
         return;
     }
 
-    let juros = calcularJurosSimples()
+    let juros = calcularJurosCompostos()
     let montante = calcularMontante(parseFloat(capitalInicial.value), juros)
 
     const brl = valor => valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
     divResultado.innerHTML = `
-        <p>Juros Simples: ${brl(juros)}</p>
+        <p>Capital Inicial: ${brl(parseFloat(capitalInicial.value))}</p>
+        <p>Taxa Mensal: ${taxaMensal.value}%</p>
+        <p>Tempo: ${tempo.value} meses</p>
+        <p>Juros Compostos: ${brl(juros)}</p>
         <p>Montante Total: ${brl(montante)}</p>
     `
-}
+    return
+    }
 )
 
-
-// ======================|Verificar entrada de dados|=================
 function validarEntrada() {
     const campos = [capitalInicial.value, taxaMensal.value, tempo.value]
 
@@ -59,8 +57,3 @@ function validarEntrada() {
 
     return true
 }
-
-
-
-
-// =================|Fim do código|=================

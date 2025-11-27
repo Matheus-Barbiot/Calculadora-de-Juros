@@ -5,46 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Pages/style.css">
     <title>Calculadora de Juros</title>
 </head>
 <body>
     <header>
         <h1>Calculadora de Juros</h1>
     </header>
-    <main>
+    <main id="home">
         <section>
-            <h2>Juros Simples</h2>
-            <form>
-                <div>
-                    <label for="capital">Capital (R$)</label>
-                    <input type="number" id="capital" name="capital" value="100" class="data-input">
-                </div>
-                <div>
-                    <label for="taxa">Taxa de juros (%)</label>
-                    <input type="number" id="taxa" name="taxa" value="50" class="data-input">
-                </div>
-                <div>
-                    <div>
-                        <label for="periodo">Tempo de pagamento (meses)</label>
-                        <input type="number" id="tempo" name="tempo" value="1" class="data-input">
-                    </div>
-
-                    <input type="button" value="Calcular" id="calcular" class="botao-calcular">
-                </div>
-            </form>
-            <hr>
-            <h3>Resultado:</h3>
-            <div id="resultado" class="resultado">
-                
+            <h2>Escolha o tipo de juros</h2>
+            <div id="link">
+                <a href="Pages/simples.html">Juros Simples</a>
+                <a href="Pages/composto.html">Juros Composto</a>
             </div>
         </section>
+        
+
     </main>
     <footer>
-        <p>Calculadora de Juros &copy;Matheus Barbiot 2024</p>
+        <p>Calculadora de Juros &copy;Matheus Barbiot 2025</p>
     </footer>
-
-
-</body> 
-<script src="index.js"></script>
+</body>
 </html>

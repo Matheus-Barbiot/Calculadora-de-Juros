@@ -3,7 +3,7 @@
 ==================== */
 
 :root {
-    --geral-color: #2e3057;
+    --geral-color: linear-gradient(45deg, rgb(226, 169, 64), rgb(195, 0, 195));
 }
 
 * {
@@ -13,16 +13,17 @@
 }
 
 html,  body {
-    height: 100%;
+    background: var(--geral-color);
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
-    background-color: rgb(212, 235, 255);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    margin: 0;
 }
 
 /* ====================
@@ -37,26 +38,17 @@ header, footer {
 }
 
 main {
-    margin-top: 1rem;
     flex: 1;
 }
 
 header {
-    background: linear-gradient(to bottom, var(--geral-color), #00000000);
     width: 100%;
 }
 
-header h1 {
-    margin: 0.5em 0;
-}
 
 footer {
-    background: linear-gradient(to top, var(--geral-color), #00000000);
+    margin-top: 1em;
     height: 10em;
-}
-
-footer p {
-    margin-top: 5rem;
 }
 
 hr {
@@ -64,6 +56,7 @@ hr {
     border-top: 1px solid #ccc;
     margin: 1rem 0;
 }
+
 
 /* ====================
     Formulário (conteudo principal)
@@ -80,6 +73,10 @@ main {
 section {
     background-color: rgb(255, 255, 255);
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: justify;
     border-radius: 1em;
     box-shadow: 2px 2px 20px rgba(6, 14, 85, 0.505);
     width: 400px;  
@@ -90,15 +87,26 @@ section h2 {
     text-align: center;
     margin-bottom: 2rem;
 }
+
+section a {
+    text-decoration: none;
+    color: var(--geral-color);
+    font-weight: bolder;
+    margin-bottom: 1rem;
+}
+
 form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 form div {
     margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 form div label {
@@ -117,9 +125,9 @@ input.data-input {
     margin: auto;
 }
 
-input.botao-calcular {
+input#calcular {
     padding: 0.7rem;
-    background-color: var(--geral-color);
+    background: var(--geral-color);
     color: white;
     border: none;
     border-radius: 0.5rem;
@@ -129,16 +137,40 @@ input.botao-calcular {
     margin-top: 1rem;
 }
 
-div.resultado {
+div#resultado {
     margin-top: 1rem;
     padding: 2rem;
     background-color: #ededed;
     border: solid 1px #ccc;
     border-radius: 0.5rem;
     text-align: center;
+    width: 100%;
     
 }
 
+/* ====================
+    Home
+==================== */
+
+main a {
+    background-color: white;
+    display: block;
+    margin: 2em;
+    padding: 1rem;
+    border-radius: 2em;
+    width: 10em;
+    text-align: center;
+    text-decoration: none;
+    color:  black;
+    box-shadow: 2px 2px 20px rgba(6, 14, 85, 0.505)
+}   
+
+main div#link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    ;
+}
 
 
 
